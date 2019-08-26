@@ -1,15 +1,13 @@
 package com.udara;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 import com.udara.StreamHandler.InputStreamListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 
 /**
  * Hello world!
@@ -18,17 +16,17 @@ public class App {
     final static String HOST = "127.0.0.1";
     final static int PORT = 4099;
 
-    private static Logger logger = LogManager.getLogger(App.class);
+    private static Logger logger;
 
     public static void main(String[] args) {
+        initLogger();
+
         try {
             Socket socket = new Socket(HOST, PORT);
 
-            logger.info("Connected to: " + socket.getInetAddress().toString());
+            logger.info("hello");
 
             System.out.println("Connected to: " + socket.getInetAddress().toString());
-
-            logger.debug("Hello");
 
             Scanner scanner = new Scanner(System.in);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -45,6 +43,7 @@ public class App {
 
             scanner.close();
             socket.close();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -72,5 +71,13 @@ public class App {
                 System.out.println(line);
             }
         });
+    }
+
+    static void logEvent(){
+        logger.info("Event started!");
+    }
+
+    static void initLogger(){
+        logger = LogManager.getLogger(App.class);
     }
 }
