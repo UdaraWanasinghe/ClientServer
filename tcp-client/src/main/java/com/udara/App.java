@@ -78,6 +78,6 @@ public class App {
     }
 
     static void initLogger(){
-        logger = LogManager.getLogger(App.class);
+        logger = LogManager.getLogger("com.udara.App.File");
     }
 }
