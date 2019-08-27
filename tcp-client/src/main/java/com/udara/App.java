@@ -1,13 +1,15 @@
 package com.udara;
 
-import java.io.*;
-import java.net.Socket;
-import java.util.Scanner;
-
 import com.udara.StreamHandler.InputStreamListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * Hello world!
@@ -16,17 +18,14 @@ public class App {
     final static String HOST = "127.0.0.1";
     final static int PORT = 4099;
 
-    private static Logger logger;
+    private static Logger logger = LogManager.getLogger(App.class.getName() + ".Client");
 
     public static void main(String[] args) {
-        initLogger();
-
         try {
+
             Socket socket = new Socket(HOST, PORT);
 
-            logger.info("hello");
-
-            System.out.println("Connected to: " + socket.getInetAddress().toString());
+            logger.info("Connected to: " + socket.getInetAddress().toString());
 
             Scanner scanner = new Scanner(System.in);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -36,16 +35,16 @@ public class App {
             out.write(line.getBytes());
             out.flush();
 
-            System.out.print("Sent: " + line);
+            logger.info("Sent: " + line);
 
             line = in.readLine();
-            System.out.println("Received: " + line);
+            logger.info("Received: " + line);
 
             scanner.close();
             socket.close();
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.error("Unexpected error", e);
         }
 
     }
@@ -57,7 +56,8 @@ public class App {
             @Override
             public void run() {
                 try {
-                    System.out.print("Input: ");
+                    logger.info("Input: ");
+
                     streamHandler.mirrorLineToOutput(System.in);
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
@@ -71,13 +71,5 @@ public class App {
                 System.out.println(line);
             }
         });
-    }
-
-    static void logEvent(){
-        logger.info("Event started!");
-    }
-
-    static void initLogger(){
-        logger = LogManager.getLogger("com.udara.App.File");
     }
 }

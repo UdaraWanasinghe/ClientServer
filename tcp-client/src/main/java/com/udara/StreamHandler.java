@@ -27,7 +27,6 @@ public class StreamHandler {
     public void mirrorLineToOutput(InputStream in) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
 
-
         while (true) {
             if (in.available() > 0) {
                 byte[] buffer = new byte[1024];

@@ -100,30 +100,45 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.1.1</version>
-                    <configuration>
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                        <archive>
-                            <manifest>
-                                <mainClass>com.udara.App</mainClass>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                            <phase>package</phase> <!-- bind to the packaging phase -->
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.udara.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.10</version>
+                <configuration>
+                    <programs>
+                        <program>
+                            <mainClass>com.udara.App</mainClass>
+                            <id>app</id>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
