@@ -56,6 +56,11 @@
             <artifactId>jackson-annotations</artifactId>
             <version>2.7.4</version>
         </dependency>
+        <dependency>
+            <groupId>tanukisoft</groupId>
+            <artifactId>wrapper</artifactId>
+            <version>3.2.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -102,100 +107,49 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-shade-plugin</artifactId>-->
-                <!--<version>3.2.1</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>shade</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<filters>-->
-                                <!--<filter>-->
-                                    <!--<artifact>org.apache.logging.log4j:log4j-api</artifact>-->
-                                    <!--<includes>-->
-                                        <!--<include>**</include>-->
-                                    <!--</includes>-->
-                                <!--</filter>-->
-                                <!--<filter>-->
-                                    <!--<artifact>org.apache.logging.log4j:log4j-core</artifact>-->
-                                    <!--<includes>-->
-                                        <!--<include>**</include>-->
-                                    <!--</includes>-->
-                                <!--</filter>-->
-                            <!--</filters>-->
-                            <!--<minimizeJar>true</minimizeJar>-->
-                            <!--<transformers>-->
-                                <!--<transformer-->
-                                        <!--implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-                                    <!--<mainClass>com.udara.App</mainClass>-->
-                                <!--</transformer>-->
-                            <!--</transformers>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-dependency-plugin</artifactId>-->
-                <!--<version>3.1.1</version>-->
-                <!--<configuration>-->
-                    <!--<artifactItems>-->
-                        <!--<artifactItem>-->
-                            <!--<groupId>org.apache.logging.log4j</groupId>-->
-                            <!--<artifactId>log4j-api</artifactId>-->
-                            <!--<type>jar</type>-->
-                        <!--</artifactItem>-->
-                        <!--<artifactItem>-->
-                            <!--<groupId>org.apache.logging.log4j</groupId>-->
-                            <!--<artifactId>log4j-core</artifactId>-->
-                            <!--<type>jar</type>-->
-                        <!--</artifactItem>-->
-                    <!--</artifactItems>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>copy-dependencies</id>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>copy-dependencies</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<outputDirectory>${project.build.directory}/libs</outputDirectory>-->
-                            <!--<overWriteReleases>false</overWriteReleases>-->
-                            <!--<overWriteSnapshots>true</overWriteSnapshots>-->
-                            <!--<excludeTransitive>true</excludeTransitive>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-jar-plugin</artifactId>-->
-                <!--<configuration>-->
-                    <!--<archive>-->
-                        <!--<manifest>-->
-                            <!--<addClasspath>true</addClasspath>-->
-                            <!--<classpathPrefix>libs/</classpathPrefix>-->
-                            <!--<mainClass>-->
-                                <!--com.udara.App-->
-                            <!--</mainClass>-->
-                        <!--</manifest>-->
-                    <!--</archive>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
+            <!--Maven appassembler plugin-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
                 <version>1.10</version>
                 <configuration>
+                    <!--artifacts gets assembled here-->
+                    <!--default value is ${project.build.directory}/appassembler-->
                     <assembleDirectory>
                         ${project.build.directory}/appassembler
                     </assembleDirectory>
+
+                    <!--script files are in the bin folder-->
+                    <!--use .sh file extension for unix script file-->
+                    <binFileExtensions>
+                        <unix>.sh</unix>
+                    </binFileExtensions>
+                    <!--defines name of the bin folder-->
+                    <binFolder>bin</binFolder>
+
+                    <!--generates repository. default value is true-->
+                    <generateRepository>true</generateRepository>
+
+                    <!--path of the repository folder-->
+                    <repositoryName>lib</repositoryName>
+
+                    <!--platforms to generate bin files for-->
+                    <platforms>
+                        <!--generate only for unix-->
+                        <platform>unix</platform>
+                    </platforms>
+
+                    <!--copy configuration files to conf folder-->
+                    <!--default config folder is src/main/config-->
+                    <configurationSourceDirectory>${project.basedir}/src/main/resources</configurationSourceDirectory>
+                    <!--name of the configurations directory-->
+                    <configurationDirectory>conf</configurationDirectory>
+                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
+                    <logsDirectory>logs</logsDirectory>
+
+                    <!--the set of programs that bin files will be generated for-->
                     <programs>
                         <program>
                             <mainClass>com.udara.App</mainClass>
@@ -203,7 +157,45 @@
                         </program>
                     </programs>
                 </configuration>
+
+                <!--execute goal during build lifecycle-->
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>install-assemble</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-jsw-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-daemons</goal>
+                        </goals>
+                        <configuration>
+                            <repositoryLayout>flat</repositoryLayout>
+                            <daemons>
+                                <daemon>
+                                    <id>${artifactId}</id>
+                                    <wrapperMainClass>org.tanukisoftware.wrapper.WrapperJarApp</wrapperMainClass>
+                                    <platforms>
+                                        <platform>jsw</platform>
+                                    </platforms>
+                                </daemon>
+                            </daemons>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+
+            <!--Maven assembly plugin-->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.1</version>
@@ -211,6 +203,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
                             <mainClass>com.udara.App</mainClass>
@@ -235,9 +228,14 @@
                             <goal>single</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <phase>install</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
-
     </build>
 </project>
