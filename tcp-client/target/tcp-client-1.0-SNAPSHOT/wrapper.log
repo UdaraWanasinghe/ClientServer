@@ -1,0 +1,74 @@
+STATUS | wrapper  | 2019/08/29 13:15:42 | --> Wrapper Started as Console
+STATUS | wrapper  | 2019/08/29 13:15:42 | Launching a JVM...
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 13:15:43.146 [main] ERROR com.udara.App.Client - Unexpected error
+INFO   | jvm 1    | 2019/08/29 13:15:43 | java.net.ConnectException: Connection refused (Connection refused)
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.Socket.<init>(Socket.java:434) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at java.net.Socket.<init>(Socket.java:211) ~[?:1.8.0_121]
+INFO   | jvm 1    | 2019/08/29 13:15:43 | 	at com.udara.App.main(App.java:26) [tcp-client-1.0-SNAPSHOT.jar:?]
+ERROR  | wrapper  | 2019/08/29 13:15:43 | JVM exited while loading the application.
+STATUS | wrapper  | 2019/08/29 13:15:47 | Launching a JVM...
+ERROR  | wrapper  | 2019/08/29 13:15:47 | JVM exited while loading the application.
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 13:15:47.726 [main] ERROR com.udara.App.Client - Unexpected error
+INFO   | jvm 2    | 2019/08/29 13:15:47 | java.net.ConnectException: Connection refused (Connection refused)
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.Socket.<init>(Socket.java:434) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at java.net.Socket.<init>(Socket.java:211) ~[?:1.8.0_121]
+INFO   | jvm 2    | 2019/08/29 13:15:47 | 	at com.udara.App.main(App.java:26) [tcp-client-1.0-SNAPSHOT.jar:?]
+STATUS | wrapper  | 2019/08/29 13:15:51 | Launching a JVM...
+ERROR  | wrapper  | 2019/08/29 13:15:52 | JVM exited while loading the application.
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 13:15:52.311 [main] ERROR com.udara.App.Client - Unexpected error
+INFO   | jvm 3    | 2019/08/29 13:15:52 | java.net.ConnectException: Connection refused (Connection refused)
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.Socket.<init>(Socket.java:434) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at java.net.Socket.<init>(Socket.java:211) ~[?:1.8.0_121]
+INFO   | jvm 3    | 2019/08/29 13:15:52 | 	at com.udara.App.main(App.java:26) [tcp-client-1.0-SNAPSHOT.jar:?]
+STATUS | wrapper  | 2019/08/29 13:15:56 | Launching a JVM...
+ERROR  | wrapper  | 2019/08/29 13:15:56 | JVM exited while loading the application.
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 13:15:56.926 [main] ERROR com.udara.App.Client - Unexpected error
+INFO   | jvm 4    | 2019/08/29 13:15:56 | java.net.ConnectException: Connection refused (Connection refused)
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.Socket.<init>(Socket.java:434) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at java.net.Socket.<init>(Socket.java:211) ~[?:1.8.0_121]
+INFO   | jvm 4    | 2019/08/29 13:15:56 | 	at com.udara.App.main(App.java:26) [tcp-client-1.0-SNAPSHOT.jar:?]
+STATUS | wrapper  | 2019/08/29 13:16:01 | Launching a JVM...
+ERROR  | wrapper  | 2019/08/29 13:16:01 | JVM exited while loading the application.
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 13:16:01.503 [main] ERROR com.udara.App.Client - Unexpected error
+INFO   | jvm 5    | 2019/08/29 13:16:01 | java.net.ConnectException: Connection refused (Connection refused)
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.Socket.<init>(Socket.java:434) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at java.net.Socket.<init>(Socket.java:211) ~[?:1.8.0_121]
+INFO   | jvm 5    | 2019/08/29 13:16:01 | 	at com.udara.App.main(App.java:26) [tcp-client-1.0-SNAPSHOT.jar:?]
+FATAL  | wrapper  | 2019/08/29 13:16:01 | There were 5 failed launches in a row, each lasting less than 300 seconds.  Giving up.
+FATAL  | wrapper  | 2019/08/29 13:16:01 |   There may be a configuration problem: please check the logs.
+STATUS | wrapper  | 2019/08/29 13:16:01 | <-- Wrapper Stopped

@@ -123,9 +123,9 @@
 
                     <!--script files are in the bin folder-->
                     <!--use .sh file extension for unix script file-->
-                    <binFileExtensions>
-                        <unix>.sh</unix>
-                    </binFileExtensions>
+                    <!--<binFileExtensions>-->
+                        <!--<unix>.sh</unix>-->
+                    <!--</binFileExtensions>-->
                     <!--defines name of the bin folder-->
                     <binFolder>bin</binFolder>
 
@@ -184,7 +184,7 @@
                             <daemons>
                                 <daemon>
                                     <id>${artifactId}</id>
-                                    <wrapperMainClass>org.tanukisoftware.wrapper.WrapperJarApp</wrapperMainClass>
+                                    <wrapperMainClass>com.udara.App</wrapperMainClass>
                                     <platforms>
                                         <platform>jsw</platform>
                                     </platforms>
@@ -210,7 +210,7 @@
                         </manifest>
                     </archive>
                     <descriptors>
-                        <descriptor>src/assembly/bin.xml</descriptor>
+                        <descriptor>src/assembly/descriptors.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>

@@ -11,6 +11,7 @@
             <includes>
                 <include>**</include>
             </includes>
+            <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
             <directory>${project.build.directory}/generated-resources/appassembler/jsw/${artifactId}/bin</directory>
@@ -18,6 +19,7 @@
             <includes>
                 <include>**</include>
             </includes>
+            <fileMode>0755</fileMode>
         </fileSet>
 
         <!--copy jar executables-->
@@ -27,6 +29,7 @@
             <includes>
                 <include>**</include>
             </includes>
+            <fileMode>0755</fileMode>
         </fileSet>
 
         <!--include conf directory-->
